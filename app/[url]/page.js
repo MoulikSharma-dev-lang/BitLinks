@@ -1,7 +1,7 @@
 import React from 'react'
 import UrlUser from '../models/Url'
 // import { connectDb } from '../db/connectDb'
-import { redirect } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 
 export default async function Url({ params }) {
     const url = (await params).url
@@ -9,12 +9,10 @@ export default async function Url({ params }) {
     const pageUrl = urls.find((item) => {
         return item.expectedUrl === url
     })
-    if (pageUrl){
+    if (pageUrl) {
         redirect(pageUrl.originalUrl)
     }
-    return (
-        <div>
-
-        </div>
-    )
+    else {
+        return notFound()
+    }
 }

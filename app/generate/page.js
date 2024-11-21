@@ -53,7 +53,7 @@ export default function Generate() {
       {urlArray.map((item, index) => {
         return <div key={index} className="text-center mb-10">
           <b>Url: </b><p>{item.originalUrl}</p>
-          <b>Short Url: </b><p onClick={()=>{redirect(`/${item.expectedUrl}`)}} className="cursor-pointer">{process.env.NEXT_PUBLIC_HOST}/{item.expectedUrl}</p>
+          <b>Short Url: </b><p onClick={()=>{redirect(`/${item.expectedUrl}`)}} className="cursor-pointer">https://bitlinks.onrender.com/{item.expectedUrl}</p>
           <button onClick={()=>{hitApi("/api/deleteUrl", "DELETE", item); toast.success("Url is deleted successfully! Refresh the page!", {position: "top-right"})}} className="bg-red-500 text-white p-2 rounded-lg">Delete</button>
         </div>
       })}
